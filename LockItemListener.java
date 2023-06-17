@@ -26,4 +26,17 @@ public class LockItemListener implements Listener {
             e.setCancelled(true);
         }
     }
+
+
+    @EventHandler
+    public void onDrag(PlyaerDragItemEvent e) {
+        if (!e.getInventory().getType().equals(InventoryType.PLAYER)) {
+            if (e.getCurrentItem().getItemMeta().hasLore()) {
+                if (e.getCurrentItem().getItemMeta().getLore()
+                        .contains(ChatColor.translateAlternateColorCodes('&', "&c&lLocked"))) {
+                    e.setCancelled(true);
+                }
+            }
+        }
+    }
 }
